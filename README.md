@@ -1,4 +1,4 @@
-# LÖVEstory
+#LÖVEstory
 ## _Story manager for your game_
 LÖVEstory is a parser, command-handler and text-typer for help you make story telling faster in your game.
 
@@ -61,4 +61,50 @@ function love.mousepressed()
     ls.next_action()
 end
 ```
-Click mouse!
+
+Click the mouse!
+
+### Add new command
+Command is short of function you call inside the story text file.
+
+Structure of command is like this:
+```txt
+command_name <arg1> <arg2> ...
+```
+
+for example you can add command like this:
+```lua
+local ls = require "lovestory"
+
+-- This command will print something to your console.
+ls.command.register("print", function(text, text2)
+    print(text, text2) -- this just example for multi argument
+end)
+```
+
+now you can call print command like this:
+```txt
+print "This is print test!" " and is it Work?"
+```
+if it's needed you can passing argument in multiline with 'begin' and 'end' keywords after command name:
+```txt
+print begin
+    "This is print test!"
+    " and is it Work?"
+end
+```
+or
+```txt
+print begin "This is print test!" 
+    " and is it Work?"
+end
+```
+or 
+
+```txt
+print begin
+
+"This is print test!" " and is it Work?"
+end
+```
+honestly indentation, spaces, newlines it doesn't matters.
